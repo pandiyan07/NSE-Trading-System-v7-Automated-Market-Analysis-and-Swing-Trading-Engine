@@ -11,11 +11,10 @@ def RSI_14_AVERAGE_CALCULATOR(yf_cp_list,event):
     for i in range(0,avg_iteration):
         if len(yf_cp_list) >= 15:  
             price_diffs = [yf_cp_list[i] - yf_cp_list[i - 1] for i in range(i, i+14)]
-            #  price_diffs = [yf_cp_list[i] - yf_cp_list[i - 1] for i in range(1, len(yf_cp_list))]
         else:
             print ("WARNING :- NUMBER OF PRICES ARE LESS THAN 14 DATA POINTS...!!\n")
             print ('The length of close price list is = \n',len(yf_cp_list))
-            print ('\n\n\n\n\n\n So thats why exiting the program................. \n\n\n\n\n\n')
+            print ('\n\n So thats why exiting the program.................')
             sys.exit(1)
         gains = []
         losses = []
@@ -39,7 +38,7 @@ def RSI_14_AVERAGE_CALCULATOR(yf_cp_list,event):
         
         rsi_avg.append(rsi)
 
-    event.set() #3
+    event.set() 
     average = sum(rsi_avg)/avg_iteration
     return round(average,1)
 
@@ -226,21 +225,6 @@ def DATA_PROCESSOR(start, end, yfd_dict, period_for_5m,two_min_RSI_avg, five_min
     total_traded_volume, pChange, lock, breakout, bopp,twenty_ma,up_and_low_circuit,orb,
     last_three_volume,eqList,event,jg_stock_quote,ten_min_bo,five_min_bo):
     for i in range(start, end):
-        
-        '''    AVERAGE RSI(14) COLUMN   '''
-        '''
-        for key,value in yfd_dict.items():
-            yf_cp_list = value[(eqList[i], 'Close')].tolist()
-            rsi = RSI_14_AVERAGE_CALCULATOR(yf_cp_list,event)
-            event.wait()    #3
-            with lock:
-                if key == '2m':
-                    two_min_RSI_avg.append(rsi)
-                ################# release this column of the comment once you include the 5min data average RSI caluclation column
-                if key == '5m':
-                    five_min_RSI_avg.append(rsi)
-        '''    
-        
         
         '''    PRICE BREAKOUT COLUMN    '''
         yf_all_stocks_data = yfd_dict['5m'].iloc[-3:]
