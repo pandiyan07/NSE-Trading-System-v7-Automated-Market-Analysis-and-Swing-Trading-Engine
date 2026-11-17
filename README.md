@@ -1,7 +1,6 @@
 # Project Title
 
-**NSE Trading System v7 -- Automated Market Analysis & Swing Trading
-Engine**
+**NSE Trading System v7 - Automated Market Analysis & Swing Trading Engine**
 
 ## Table of Contents
 
@@ -21,6 +20,8 @@ Engine**
 -   Disclaimer
 
 ## About The Project
+
+Built on - June 2024
 
 This project is a modular Python-based trading system that automates
 Indian stock market analysis using Yahoo Finance, NSELive and NSELib. It
@@ -74,8 +75,8 @@ pip install pandas numpy yfinance nselib jugaad-data
 ### Installation
 
 ``` bash
-git clone https://github.com/yourusername/nse-trading-system-v7.git
-cd nse-trading-system-v7
+git clone https://github.com/pandiyan07/NSE-Trading-System-v7-Automated-Market-Analysis-and-Swing-Trading-Engine.git
+cd NSE-Trading-System-v7-Automated-Market-Analysis-and-Swing-Trading-Engine
 pip install -r requirements.txt
 python Trading_system_v7.py
 ```
