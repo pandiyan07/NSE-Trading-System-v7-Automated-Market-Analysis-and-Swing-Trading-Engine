@@ -18,8 +18,8 @@ def JUGAAD_DATA(n,lock,jg_stock_quote,eq,Stock,l):
             return jg_data
         except Exception as e:
             
-            print ('\n\n\n\n\n\n',repr(e))
-            print ('\n\n\n\n\n\nERROR = Couldnt reach the NSE server for the STOCK QUOTE,\nSo retrying again to fetch the data..........\n\n\n\n\n\n')
+            print ('\n\n',repr(e))
+            print ('\n\nnERROR = Couldnt reach the NSE server for the STOCK QUOTE,\nSo retrying again to fetch the data....')
             if l < 5:
                 FETCHER(n,eq,l)
     
@@ -56,9 +56,7 @@ def DATA_FETCHER(per,inte,event,eqList):
     return yf_all_stocks_data
 
 
-def SCHEDULE_TASK(y,yfd_dict,lock,period_for_2m,period_for_5m,
-                trading_system_start_time,event,eqList,n,
-                jg_stock_quote,Stock,start,end,process_name):
+def SCHEDULE_TASK(y,yfd_dict,lock,period_for_2m,period_for_5m,trading_system_start_time,event,eqList,n,jg_stock_quote,Stock,start,end,process_name):
     
     if period_for_2m == 'before':
         period_interval_2m = {
@@ -132,7 +130,7 @@ def SCHEDULE_INITIATOR(chunk_size,num_processor_cores,eqList,y,event,lock,proces
         y+=1
         
         data_fetching_process = multiprocessing.Process(
-            target=SCHEDULE_TASK,                        ############## SCHEDULER.py file
+            target=SCHEDULE_TASK,                        # SCHEDULER.py file
             args=(y,yfd_dict,lock,period_for_2m,period_for_5m,trading_system_start_time,
                 event,eqList,n,jg_stock_quote,Stock,start,end,process_name))
         processes.append(data_fetching_process)
